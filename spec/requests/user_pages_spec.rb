@@ -9,5 +9,6 @@ describe "User pages" do
 
     it { should have_content('Sign up') }
     it { should have_title(full_title('Sign up')) }
+	## it { should_not have_content('Find me in app/views/users/new.html.erb')}
   end
 end
