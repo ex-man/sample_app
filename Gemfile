@@ -1,14 +1,25 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '1.9.3'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
+# try making bcrypt work
+#gem 'rake-compiler', '~> 0.9.2'
+#gem "rdoc", "~> 3.12.2"
+#gem "rspec", "~> 2.14.1"
+# end of extra things
+gem 'bcrypt-ruby', "~> 3.1.2" #git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
+#alternative - maybe use somewhere else...
+#gem "salt-and-pepper"
+
 #gem 'pg', '0.15.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails', '2.14.0'
+	gem 'annotate', '2.4.0'			# this allows me to call 'bundel exec annotate --position before' to document model elements in the database
 end
 
 group :test do
