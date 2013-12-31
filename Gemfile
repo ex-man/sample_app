@@ -4,15 +4,8 @@ ruby '1.9.3'
 
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
-# try making bcrypt work
-#gem 'rake-compiler', '~> 0.9.2'
-#gem "rdoc", "~> 3.12.2"
-#gem "rspec", "~> 2.14.1"
 # end of extra things
-gem 'bcrypt-ruby', "~> 3.1.2" #git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
-
-#alternative - maybe use somewhere else...
-#gem "salt-and-pepper"
+gem 'bcrypt-ruby', "~> 3.1.0" #git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 #gem 'pg', '0.15.1'
 
