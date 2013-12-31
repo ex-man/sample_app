@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: df09e4c73f2f3d9a134b2abf536ca5f159f33075
+  specs:
+    bcrypt-ruby (3.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,7 +34,6 @@ GEM
     annotate (2.4.0)
     arel (4.0.1)
     atomic (1.1.14)
-    bcrypt-ruby (3.1.2-x86-mingw32)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -71,6 +76,8 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     nokogiri (1.6.1-x86-mingw32)
       mini_portile (~> 0.5.0)
     pg (0.15.1-x86-mingw32)
@@ -156,7 +163,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (= 2.4.0)
-  bcrypt-ruby (~> 3.1.0)
+  bcrypt-ruby!
   bootstrap-sass (= 2.3.2.0)
   capybara (= 2.1.0)
   coffee-rails (= 4.0.1)
