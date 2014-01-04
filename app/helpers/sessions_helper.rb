@@ -1,7 +1,7 @@
 module SessionsHelper
 	# these methods will not be public, unless 'inlcude SessionHelper' is added to ApplicationController
-	def sign_in(user)
-    remember_token = User.new_remember_token
+	def sign_in(user)	
+		remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token
     user.update_attribute(:remember_token, User.encrypt(remember_token))
     self.current_user = user
@@ -20,6 +20,10 @@ module SessionsHelper
     @current_user ||= User.find_by(remember_token: remember_token)
   end
 	
+	def current_user?(user)
+    user == current_user
+  end
+	
 	def sign_out
 		#change token for security purposes
     current_user.update_attribute(:remember_token,
@@ -28,5 +32,15 @@ module SessionsHelper
 		cookies.delete(:remember_token)
 		#clear current_user
     self.current_user = nil
+  end
+	
+	# methods for friendly redirecting after login
+	def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+
+  def store_location
+    session[:return_to] = request.url if request.get?
   end
 end
