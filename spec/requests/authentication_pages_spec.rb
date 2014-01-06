@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Authentication" do
 
   subject { page }
-
+	
   describe "signin" do
     before { visit signin_path }
 
@@ -11,10 +11,15 @@ describe "Authentication" do
     it { should have_title('Sign in') }
 		
 		describe "with invalid information" do
+			let(:user) { FactoryGirl.create(:user) }
       before { click_button "Sign in" }
 
       it { should have_title('Sign in') }
       it { should have_selector('div.alert.alert-error') }
+
+			it { should_not have_link('Profile',     href: user_path(user)) }
+      it { should_not have_link('Settings',    href: edit_user_path(user)) }
+      it { should_not have_link('Sign out',    href: signout_path) } 
 			
 			describe "after visiting another page" do
 				before { click_link "Home" }
@@ -106,6 +111,18 @@ describe "Authentication" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
+      end
+    end
+		
+		describe "as admin user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+
+      before { sign_in admin, no_capybara: true }	# we are going to be using direct http calls
+
+      describe "submitting a DELETE request to the Admin#destroy action" do
+        it "should not be able to delete Admin" do
+					expect { delete user_path(admin) }.not_to change(User, :count).by(-1)
+				end
       end
     end
   end
