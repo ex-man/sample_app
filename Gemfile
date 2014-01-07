@@ -4,15 +4,12 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
-# try making bcrypt work
-#gem 'rake-compiler', '~> 0.9.2'
-#gem "rdoc", "~> 3.12.2"
-#gem "rspec", "~> 2.14.1"
-# end of extra things
-gem 'bcrypt-ruby', "~> 3.1.2" #git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'bcrypt-ruby', '~> 3.0.0' # git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'						# for displaying users in pages
+gem 'bootstrap-will_paginate', '0.0.9'
 
-#alternative - maybe use somewhere else...
-#gem "salt-and-pepper"
+# end of extra things
 
 #gem 'pg', '0.15.1'
 
@@ -25,6 +22,7 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+	gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'sass-rails', '4.0.1'
