@@ -8,7 +8,9 @@ class UsersController < ApplicationController
   end
 	
 	def show
+		# this defines variables we want to use in the view
 		@user = User.find(params[:id])
+		@microposts = @user.microposts.paginate(page: params[:page])
 	end
 	
 	def new
@@ -60,13 +62,6 @@ class UsersController < ApplicationController
     end
 		
 		# Before filters
-		
-		def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
 		
 		def correct_user
       @user = User.find(params[:id])	# this sets the controller user variable to the user => not '@user = ' is needed any more
